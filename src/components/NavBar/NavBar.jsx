@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const NavBar = ({ user, handleLogout }) => {
   return (
@@ -17,6 +17,8 @@ const NavBar = ({ user, handleLogout }) => {
           <ul>
             <li><Link to="/login">Log In</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
+            <li><NavLink to='/'>Type List</NavLink></li>
+            <li><NavLink to='/add'>Add PokeType</NavLink></li>
           </ul>
         </nav>
       }
