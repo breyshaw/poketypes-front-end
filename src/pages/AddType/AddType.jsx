@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import styles from './AddType.module.css'
 
 //Keep track of state
 //Check to make sure the data in the form is valid
@@ -9,12 +10,12 @@ function AddType(props) {
   const [formData, setFormData] = useState({
     title: '',
     imageUrl: '',
-    topWeakness:'',
+    topWeakness: '',
     weakness2: '',
-    weakness3:'',
-    topStrength:'',
-    strength2:'',
-    strength3:'',
+    weakness3: '',
+    topStrength: '',
+    strength2: '',
+    strength3: '',
   })
 
   return (
