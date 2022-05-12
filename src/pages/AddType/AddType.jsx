@@ -9,7 +9,7 @@ import styles from './AddType.module.css'
 function AddType(props) {
   const [formData, setFormData] = useState({
     title: '',
-    imageUrl: '',
+    imageUrl: 'test state',
     topWeakness: '',
     weakness2: '',
     weakness3: '',
@@ -23,14 +23,15 @@ function AddType(props) {
       <h1 className='mt-4 mb-0'>Add a Pokemon Type!</h1>
       <form
         autoComplete="off"
-      // onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
+        className={styles.form}
       >
         <div className="col-4">
           <p className='form-label'>Type Name:</p>
           <input
             className='form-control border border-dark'
             type="text"
-            // value={title}
+            value={formData.title}
             name="title"
           // onChange={handleChange}
           />
@@ -39,7 +40,7 @@ function AddType(props) {
           <p className='form-label'>Image Url</p>
           <input type="text"
             className='form-control border border-dark'
-            // value={imageUrl}
+            value={formData.imageUrl}
             name="imageUrl"
           // onChange={handleChange}
           />
@@ -48,7 +49,7 @@ function AddType(props) {
           <p className='form-label'>Strongest against</p>
           <select name="topStrength"
             className='form-control border border-dark'
-          // value={strongAgainst}
+            value={formData.topStrength}
           // onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
@@ -61,7 +62,7 @@ function AddType(props) {
           <p className='form-label'>2nd strongest against</p>
           <select name="strength2"
             className='form-control border border-dark'
-          // value={strongAgainst}
+            value={formData.strength2}
           // onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
@@ -75,7 +76,7 @@ function AddType(props) {
           <p className='form-label'>3rd strongest against</p>
           <select name="strength3"
             className='form-control border border-dark'
-          // value={strongAgainst}
+            value={formData.strength3}
           // onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
@@ -89,7 +90,7 @@ function AddType(props) {
           <p className='form-label'>Top Weakness</p>
           <select name="topWeakness"
             className='form-control border border-dark'
-          // value={strongAgainst}
+            value={formData.topWeakness}
           // onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
@@ -102,7 +103,7 @@ function AddType(props) {
           <p className='form-label'>2nd top weakness</p>
           <select name="weakness2"
             className='form-control border border-dark'
-          // value={strongAgainst}
+            value={formData.weakness2}
           // onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
@@ -115,7 +116,7 @@ function AddType(props) {
           <p className='form-label'>3rd top weakness</p>
           <select name="weakness3"
             className='form-control border border-dark'
-          // value={strongAgainst}
+            value={formData.weakness3}
           // onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
