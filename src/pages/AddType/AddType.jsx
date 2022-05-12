@@ -18,6 +18,12 @@ function AddType(props) {
     strength3: '',
   })
 
+  const handleChange = evt => {
+    setFormData({
+      ...formData, [evt.target.name]: evt.target.value,
+    })
+  }
+
   return (
     <main className='text-center'>
       <h1 className='mt-4 mb-0'>Add a Pokemon Type!</h1>
@@ -33,7 +39,7 @@ function AddType(props) {
             type="text"
             value={formData.title}
             name="title"
-          // onChange={handleChange}
+            onChange={handleChange}
           />
         </div>
         <div className="col-8">
@@ -42,7 +48,7 @@ function AddType(props) {
             className='form-control border border-dark'
             value={formData.imageUrl}
             name="imageUrl"
-          // onChange={handleChange}
+            onChange={handleChange}
           />
         </div>
         <div className="col-4">
@@ -50,7 +56,7 @@ function AddType(props) {
           <select name="topStrength"
             className='form-control border border-dark'
             value={formData.topStrength}
-          // onChange={handleChange}
+            onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
             <option>Grass</option>
@@ -63,7 +69,7 @@ function AddType(props) {
           <select name="strength2"
             className='form-control border border-dark'
             value={formData.strength2}
-          // onChange={handleChange}
+            onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
             <option>Grass</option>
@@ -77,7 +83,7 @@ function AddType(props) {
           <select name="strength3"
             className='form-control border border-dark'
             value={formData.strength3}
-          // onChange={handleChange}
+            onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
             <option>Grass</option>
@@ -91,7 +97,7 @@ function AddType(props) {
           <select name="topWeakness"
             className='form-control border border-dark'
             value={formData.topWeakness}
-          // onChange={handleChange}
+            onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
             <option>Grass</option>
@@ -104,7 +110,7 @@ function AddType(props) {
           <select name="weakness2"
             className='form-control border border-dark'
             value={formData.weakness2}
-          // onChange={handleChange}
+            onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
             <option>Grass</option>
@@ -117,7 +123,7 @@ function AddType(props) {
           <select name="weakness3"
             className='form-control border border-dark'
             value={formData.weakness3}
-          // onChange={handleChange}
+            onChange={handleChange}
           >
             <option>--Please choose an item type--</option>
             <option>Grass</option>
