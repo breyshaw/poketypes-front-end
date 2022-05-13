@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './AddType.module.css'
 
@@ -7,9 +7,11 @@ import styles from './AddType.module.css'
 //Control what happens when the form is submitted
 
 function AddType(props) {
+  const formElement = useRef()
+  const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
     title: '',
-    imageUrl: 'test state',
+    imageUrl: '',
     topWeakness: '',
     weakness2: '',
     weakness3: '',
@@ -18,7 +20,13 @@ function AddType(props) {
     strength3: '',
   })
 
+  useEffect(() => {
+    //formElement.current is the form itself
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData]) //specifying that this code will only run when initially loaded AND when the formData changes. useEffect is the shiz.
+
   const handleChange = evt => {
+    console.log(formElement)
     setFormData({
       ...formData, [evt.target.name]: evt.target.value,
     })
@@ -31,6 +39,7 @@ function AddType(props) {
         autoComplete="off"
         // onSubmit={handleSubmit}
         className={styles.form}
+        ref={formElement}
       >
         <div className="col-4">
           <p className='form-label'>Type Name:</p>
@@ -40,6 +49,7 @@ function AddType(props) {
             value={formData.title}
             name="title"
             onChange={handleChange}
+            required
           />
         </div>
         <div className="col-8">
@@ -49,6 +59,7 @@ function AddType(props) {
             value={formData.imageUrl}
             name="imageUrl"
             onChange={handleChange}
+            required
           />
         </div>
         <div className="col-4">
@@ -57,6 +68,7 @@ function AddType(props) {
             className='form-control border border-dark'
             value={formData.topStrength}
             onChange={handleChange}
+            required
           >
             <option>--Please choose an item type--</option>
             <option>Grass</option>
@@ -98,6 +110,7 @@ function AddType(props) {
             className='form-control border border-dark'
             value={formData.topWeakness}
             onChange={handleChange}
+            required
           >
             <option>--Please choose an item type--</option>
             <option>Grass</option>
@@ -132,7 +145,9 @@ function AddType(props) {
           </select>
         </div>
         <div className="mb-3">
-          <button className='btn btn-primary border border-dark' disabled>
+          <button className='btn btn-primary border border-dark'
+            type='submit'
+            disabled={!validForm}>
             Add Type
           </button>
           <Link to="/">
