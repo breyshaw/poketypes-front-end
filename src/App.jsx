@@ -7,6 +7,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import * as typeService from './services/typeService'
 import AddType from './pages/AddType/AddType'
 
 const App = () => {
@@ -16,7 +17,9 @@ const App = () => {
   const navigate = useNavigate()
 
   const handleAddType = newTypeData => {
-    setTypes([...types, newTypeData])
+    typeService.create(newTypeData)
+    .then(newTypeData =>
+    setTypes([...types, newTypeData]))
   }
 
   const handleLogout = () => {

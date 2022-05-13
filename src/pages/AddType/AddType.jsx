@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './AddType.module.css'
 
 //Keep track of state
@@ -8,6 +8,7 @@ import styles from './AddType.module.css'
 
 function AddType(props) {
   const formElement = useRef()
+  const navigate = useNavigate()
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
     title: '',
@@ -34,7 +35,12 @@ function AddType(props) {
 
   const handleSubmit = evt => {
     evt.preventDefault() //prevents a GET request from being triggered (no page refresh)
-    props.handleAddType(formData)
+    try {
+      props.handleAddType(formData)
+      navigate('/')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -150,7 +156,8 @@ function AddType(props) {
           </select>
         </div>
         <div className="mb-3">
-          <button className='btn btn-primary border border-dark'
+          <button
+            className='btn btn-primary border border-dark'
             type='submit'
             disabled={!validForm}>
             Add Type
