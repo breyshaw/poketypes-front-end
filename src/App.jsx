@@ -10,8 +10,14 @@ import * as authService from './services/authService'
 import AddType from './pages/AddType/AddType'
 
 const App = () => {
+  //This is the function that houses the state of Types therefore it can update state.
+  const [types, setTypes] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+
+  const handleAddType = newTypeData => {
+    setTypes([...types, newTypeData])
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -42,9 +48,10 @@ const App = () => {
         />
         <Route
           path="/changePassword"
-          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
-        <Route path='/add' element={<AddType />}/>
+        <Route path='/add'
+          element={<AddType handleAddType={handleAddType} />} />
       </Routes>
     </>
   )

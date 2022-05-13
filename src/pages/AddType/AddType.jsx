@@ -32,12 +32,17 @@ function AddType(props) {
     })
   }
 
+  const handleSubmit = evt => {
+    evt.preventDefault() //prevents a GET request from being triggered (no page refresh)
+    props.handleAddType(formData)
+  }
+
   return (
     <main className='text-center'>
       <h1 className='mt-4 mb-0'>Add a Pokemon Type!</h1>
       <form
         autoComplete="off"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         className={styles.form}
         ref={formElement}
       >
