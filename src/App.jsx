@@ -3,12 +3,12 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
-import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as typeService from './services/typeService'
 import AddType from './pages/AddType/AddType'
+import TypesList from './components/TypesList/TypesList'
 
 const App = () => {
   //This is the function that houses the state of Types therefore it can update state.
@@ -20,7 +20,7 @@ const App = () => {
     typeService.create(newTypeData)
       .then(newTypeData =>
         setTypes([...types, newTypeData]))
-        navigate('/')
+    navigate('/')
   }
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/" element={<TypesList types={types} user={user} />} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
