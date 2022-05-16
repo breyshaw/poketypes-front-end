@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -18,9 +18,15 @@ const App = () => {
 
   const handleAddType = newTypeData => {
     typeService.create(newTypeData)
-    .then(newTypeData =>
-    setTypes([...types, newTypeData]))
+      .then(newTypeData =>
+        setTypes([...types, newTypeData]))
+        navigate('/')
   }
+
+  useEffect(() => {
+    typeService.getAll()
+      .then(allTypes => setTypes(allTypes))
+  }, [])
 
   const handleLogout = () => {
     authService.logout()
