@@ -11,7 +11,7 @@ const TypesList = (props) => {
       <h1>All Types:</h1>
       <div>
         {props.types.map(type => (
-          <TypeCard key={type._id} type={type} />
+          <TypeCard key={type._id} type={type} handleDeleteType={props.handleDeleteType} />
         ))}
       </div>
     </main>
