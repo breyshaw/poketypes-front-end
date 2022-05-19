@@ -24,7 +24,8 @@ const App = () => {
   }
 
   const handleDeleteType = id => {
-    setTypes(types.filter(type => type._id !== id))
+    typeService.deleteType(id)
+      .then(deletedType => setTypes(types.filter(type => type._id !== deletedType._id)))
   }
 
   useEffect(() => {
