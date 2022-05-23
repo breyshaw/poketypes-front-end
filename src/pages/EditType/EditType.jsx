@@ -21,13 +21,9 @@ function EditType(props) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    try {
-      props.handleAddType(formData)
-      navigate('/')
-    } catch (err) {
-      console.log(err)
-    }
+    props.handleUpdateType(formData)
   }
+
 
   return (
     <main className='text-center'>

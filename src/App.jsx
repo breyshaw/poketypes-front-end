@@ -29,7 +29,11 @@ const App = () => {
       .then(deletedType => setTypes(types.filter(type => type._id !== deletedType._id)))
   }
 
-
+  const handleUpdateType = updatedTypeData => {
+    const newTypesArray = types.map(type => type._id === updatedTypeData._id ? updatedTypeData : type)
+    setTypes(newTypesArray)
+    navigate('/')
+  }
 
   useEffect(() => {
     typeService.getAll()
@@ -50,7 +54,11 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<TypesList types={types} user={user} handleDeleteType={handleDeleteType} />} />
+        <Route path="/" 
+        element={<TypesList 
+        types={types} 
+        user={user} 
+        handleDeleteType={handleDeleteType} />} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -72,7 +80,9 @@ const App = () => {
           element={<AddType handleAddType={handleAddType} />} />
         <Route
           path='/edit'
-          element={<EditType  />}
+          element={
+          <EditType
+            handleUpdateType={handleUpdateType}/>}
         />
       </Routes>
     </>
