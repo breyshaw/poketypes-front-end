@@ -9,6 +9,7 @@ import * as authService from './services/authService'
 import * as typeService from './services/typeService'
 import AddType from './pages/AddType/AddType'
 import TypesList from './components/TypesList/TypesList'
+import EditType from './pages/EditType/EditType'
 
 const App = () => {
   //This is the function that houses the state of Types therefore it can update state.
@@ -27,6 +28,8 @@ const App = () => {
     typeService.deleteType(id)
       .then(deletedType => setTypes(types.filter(type => type._id !== deletedType._id)))
   }
+
+
 
   useEffect(() => {
     typeService.getAll()
@@ -64,8 +67,13 @@ const App = () => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
-        <Route path='/add'
+        <Route
+          path='/add'
           element={<AddType handleAddType={handleAddType} />} />
+        <Route
+          path='/edit'
+          element={<EditType  />}
+        />
       </Routes>
     </>
   )
