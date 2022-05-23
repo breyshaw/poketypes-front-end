@@ -24,8 +24,18 @@ function deleteType(id) {
     .then(res => res.json())
 }
 
+function update(type) {
+  return fetch(`${BASE_URL}/${type._id}`, {
+    method: 'PUT',
+    headers: { 'Authorization': `Bearer ${tokenService.getToken()}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(type),
+  })
+  .then(res => res.json())
+}
+
 export {
   create,
   getAll,
-  deleteType
+  deleteType,
+  update
 }

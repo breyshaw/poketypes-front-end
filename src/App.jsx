@@ -30,9 +30,12 @@ const App = () => {
   }
 
   const handleUpdateType = updatedTypeData => {
-    const newTypesArray = types.map(type => type._id === updatedTypeData._id ? updatedTypeData : type)
-    setTypes(newTypesArray)
-    navigate('/')
+    typeService.update(updatedTypeData)
+    .then(updatedType => {
+      const newTypesArray = types.map(type => type._id === updatedType._id ? updatedType : type)
+      setTypes(newTypesArray)
+      navigate('/')
+    })
   }
 
   useEffect(() => {
