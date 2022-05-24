@@ -15,7 +15,9 @@ const TypesList = (props) => {
           key={type._id} 
           type={type} 
           handleUpdateType={props.handleUpdateType}
-          handleDeleteType={props.handleDeleteType} />
+          handleDeleteType={props.handleDeleteType}
+          user={props.user}
+          />
         ))}
       </div>
     </main>
