@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 function TypeCard({ type, handleDeleteType, user }) {
   return (
-    <div className="card">
+    <div className="card m-3">
       <div className="card-body">
         <h2 className="card-text">{type.title}</h2>
         <p className="card-text">Top Strength:{type.topStrength} </p>
