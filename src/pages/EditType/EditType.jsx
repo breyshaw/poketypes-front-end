@@ -7,7 +7,6 @@ function EditType(props) {
   const [formData, setFormData] = useState(location.state.type)
   const [validForm, setValidForm] = useState(true)
   const formElement = useRef()
-  const navigate = useNavigate()
 
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)

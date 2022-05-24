@@ -18,11 +18,7 @@ const NavBar = ({ user, handleLogout }) => {
                 <Link to="/">All Types</Link>
               </li>
               <li className="nav-item">
-                <Link to="/login">Log In</Link>
-              </li>
-              {/* wont need a signup as I will be the only user account */}
-              <li className="nav-item">
-                <Link to="/signup">Sign Up</Link>
+                <Link to="" onClick={handleLogout}>Log Out</Link>
               </li>
               <li className="nav-item">
                 <Link to="/add">Add PokeType (eventually Admin only)</Link>
@@ -52,12 +48,12 @@ const NavBar = ({ user, handleLogout }) => {
                   <Link to="/login">Log In</Link>
                 </li>
                 {/* wont need a signup as I will be the only user account */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="/signup">Sign Up</Link>
-                </li>
-                <li className="nav-item">
+                </li> */}
+                {/* <li className="nav-item">
                   <Link to="/add">Add PokeType (eventually Admin only)</Link>
-                </li>
+                </li> */}
                 <br />
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <h5>Hide navbar</h5>
