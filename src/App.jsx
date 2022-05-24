@@ -10,6 +10,7 @@ import * as typeService from './services/typeService'
 import AddType from './pages/AddType/AddType'
 import TypesList from './components/TypesList/TypesList'
 import EditType from './pages/EditType/EditType'
+import TypeDetails from './components/TypeDetails/TypeDetails'
 
 const App = () => {
   //This is the function that houses the state of Types therefore it can update state.
@@ -31,11 +32,11 @@ const App = () => {
 
   const handleUpdateType = updatedTypeData => {
     typeService.update(updatedTypeData)
-    .then(updatedType => {
-      const newTypesArray = types.map(type => type._id === updatedType._id ? updatedType : type)
-      setTypes(newTypesArray)
-      navigate('/')
-    })
+      .then(updatedType => {
+        const newTypesArray = types.map(type => type._id === updatedType._id ? updatedType : type)
+        setTypes(newTypesArray)
+        navigate('/')
+      })
   }
 
   useEffect(() => {
@@ -57,11 +58,11 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" 
-        element={<TypesList 
-        types={types} 
-        user={user} 
-        handleDeleteType={handleDeleteType} />} />
+        <Route path="/"
+          element={<TypesList
+            types={types}
+            user={user}
+            handleDeleteType={handleDeleteType} />} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -84,8 +85,14 @@ const App = () => {
         <Route
           path='/edit'
           element={
-          <EditType
-            handleUpdateType={handleUpdateType}/>}
+            <EditType
+              handleUpdateType={handleUpdateType} />}
+        />
+        <Route
+          path="/typeDetails"
+          element={<TypeDetails
+            user={user}
+          />}
         />
       </Routes>
     </>
